@@ -1,0 +1,584 @@
+<link type="text/css" rel="stylesheet" href="fichier_css.css">
+
+<div class="wrapper  ">
+    <section class="slider">
+        <img class="slider__slide"
+            src="http://www.mybusiness-volvotrucks.fr/wp-content/themes/volvo/app_vehicules_dispo/img/banner_vehicules_dispo.jpg">
+    </section>
+
+    <div class="infosbar">
+        <h1 class="infosbar__pagename infosbar__pagename-vehiculesDispo">Véhicules disponibles</h1>
+        <ul class="pageSwitch-vehiculesDispo hidden-xs">
+            <li class="tab current"><a href="/vehicules-disponibles/">Liste véhicules</a></li>
+            <li class="tab  "><a href="/vehicules-disponibles?booked=1">Mes réservations</a></li>
+        </ul>
+
+    </div>
+    <div class="filters hidden-xs">
+        <div class="vehiculesDispo__formWrapper">
+            <form name="filtervehiculesDispo" method="get" id="filtervehiculesDispo">
+                <label for="operation" style="display: none;">Opération : </label>
+                <div class="vehiculesDispo__selectWrapper">
+                    <select class="vehiculesDispo__select" id="operation" name="operation">
+                        <option value="all">Opération</option>
+                        <option value="COMMANDE RESEAU">COMMANDE RESEAU</option>
+                        <option value="EX DEMO VTF">EX DEMO VTF</option>
+                        <option value="PRÊT A PARTIR">PRÊT A PARTIR</option>
+                    </select>
+                </div>
+                <label for="carrosserie" style="display: none;">Carrosserie : </label>
+                <div class="vehiculesDispo__selectWrapper">
+                    <select class="vehiculesDispo__select" id="carrosserie" name="carrosserie">
+                        <option value="all">Carrosserie</option>
+                        <option value="BENNE">BENNE</option>
+                        <option value="BRAS">BRAS</option>
+                        <option value="CHASSIS NU">CHASSIS NU</option>
+                        <option value="TOUPIE">TOUPIE</option>
+                    </select>
+                </div>
+                <label for="marque" style="display: none;">Marque : </label>
+                <div class="vehiculesDispo__selectWrapper">
+                    <select class="vehiculesDispo__select" id="marque" name="marque">
+                        <option value="all">Marque</option>
+                        <option value="DALBY">DALBY</option>
+                        <option value="FOREZ">FOREZ</option>
+                        <option value="HYVA">HYVA</option>
+                        <option value="IMER">IMER</option>
+                        <option value="JOCQUIN">JOCQUIN</option>
+                        <option value="LIEBHERR">LIEBHERR</option>
+                        <option value="MANJOT">MANJOT</option>
+                        <option value="MARREL">MARREL</option>
+                        <option value="MEILLER        ">MEILLER </option>
+                        <option value="PALFINGER">PALFINGER</option>
+                        <option value="SANS">SANS</option>
+                        <option value="STETTER">STETTER</option>
+                    </select>
+                </div>
+                <label for="modele" style="display: none;">Modèle : </label>
+                <div class="vehiculesDispo__searchWrapper">
+                    <div class="vehiculesDispo__searchWrapper_inner">
+                        <input type="text" id="modele" name="modele" placeholder="Rechercher par modèle">
+                        <input type="submit" value="">
+                    </div>
+                </div>
+                <label for="om" style="display: none;">OM : </label>
+                <div class="vehiculesDispo__searchWrapper">
+                    <div class="vehiculesDispo__searchWrapper_inner">
+                        <input type="text" id="om" name="om" placeholder="Rechercher par OM">
+                        <input type="submit" value="">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+//titre des colonnes
+<section>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].OM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].NumChassis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].V_Operation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].V_Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].V_Gamme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].V_Modele)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].V_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].V_Moteur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].C_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].C_Marque)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].C_Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].D_Chassis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].D_Carrosserie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].A_Kilometrage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].A_Immatriculation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].A_Localisation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].F_PrixMiniClient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].F_ComForfait)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].F_VNC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trucks[0].ReservationDate)
+        </th>
+        <th></th>
+    </tr>
+</section>
+//items
+<section>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumChassis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.V_Operation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.V_Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.V_Gamme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.V_Modele)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.V_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.V_Moteur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Marque)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.D_Chassis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.D_Carrosserie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.A_Kilometrage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.A_Immatriculation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.A_Localisation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.F_PrixMiniClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.F_ComForfait)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.F_VNC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReservationDate)
+        </td>
+</section>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+
+
+    <section id="content" style="min-height: 500px;">
+        <div class="row display-flex">
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xs-12">
+
+                <div class="vehicule_dispo_card row  list">
+                    <div class="col-xs-7 col-sm-12 col-xs-push-5 col-sm-push-0 p-0">
+                        <div class="card_header">
+                            <div class="textRight">17133354</div>
+                            <div class="textLeft">FH 42 T3HA </div>
+                            <div class="operation">EX DEMO VTF</div>
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <div>D13K460</div>
+                            <div>SLEEPER CAB</div>
+                            <div>CHASSIS NU</div>
+                            <div>SANS</div>
+                            <div>Tracteur Suspension Pneumatique</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-12 col-xs-pull-7 col-sm-pull-0 p-0">
+                        <div class="card_picture">
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <strong>CDD : 20180118</strong><br>
+                            <strong>
+                                &nbsp; </strong>
+                        </div>
+                    </div>
+                    <div class="card_infos_sub first hidden-xs col-sm-12">
+                        <strong>CDD : 20180118</strong><br>
+                        <strong>
+                            &nbsp; </strong>
+                    </div>
+                    <div class="card_infos_sub second hidden-xs col-sm-12">
+                        <div>D13K460</div>
+                        <div>SLEEPER CAB</div>
+                        <div>CHASSIS NU</div>
+                        <div>SANS</div>
+                        <div>Tracteur Suspension Pneumatique</div>
+                    </div>
+                    <div class="card_footer card_infos_sub col-xs-12">
+                        <a href="t"
+                            class="card_link">Détails et réservations</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xs-12">
+
+                <div class="vehicule_dispo_card row  list">
+                    <div class="col-xs-7 col-sm-12 col-xs-push-5 col-sm-push-0 p-0">
+                        <div class="card_header">
+                            <div class="textRight">18138309</div>
+                            <div class="textLeft">FH 62 TR3 HA </div>
+                            <div class="operation">COMMANDE RESEAU</div>
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <div>D13K460</div>
+                            <div>gilles.vantalon@groupebrochard.fr</div>
+                            <div>&nbsp;</div>
+                            <div>&nbsp;</div>
+                            <div>&nbsp;</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-12 col-xs-pull-7 col-sm-pull-0 p-0">
+                        <div class="card_picture">
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <strong>CDD : 20181029</strong><br>
+                            <strong>
+                                &nbsp; </strong>
+                        </div>
+                    </div>
+                    <div class="card_infos_sub first hidden-xs col-sm-12">
+                        <strong>CDD : 20181029</strong><br>
+                        <strong>
+                            &nbsp; </strong>
+                    </div>
+                    <div class="card_infos_sub second hidden-xs col-sm-12">
+                        <div>D13K460</div>
+                        <div>gilles.vantalon@groupebrochard.fr</div>
+                        <div>&nbsp;</div>
+                        <div>&nbsp;</div>
+                        <div>&nbsp;</div>
+                    </div>
+                    <div class="card_footer card_infos_sub col-xs-12">
+                        <a href="t"
+                            class="card_link">Détails et réservations</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xs-12">
+
+                <div class="vehicule_dispo_card row  list">
+                    <div class="col-xs-7 col-sm-12 col-xs-push-5 col-sm-push-0 p-0">
+                        <div class="card_header">
+                            <div class="textRight">18169168</div>
+                            <div class="textLeft">FM 62 TR3 HAX</div>
+                            <div class="operation">PRÊT A PARTIR</div>
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <div>D13K460</div>
+                            <div>DALBY - BENNES </div>
+                            <div>BRAS</div>
+                            <div>DALBY</div>
+                            <div>XHM3 MONTE 20-22T</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-12 col-xs-pull-7 col-sm-pull-0 p-0">
+                        <div class="card_picture">
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <strong>CDD : 20190902</strong><br>
+                            <strong>
+                                CAR : 04/10/2019 </strong>
+                        </div>
+                    </div>
+                    <div class="card_infos_sub first hidden-xs col-sm-12">
+                        <strong>CDD : 20190902</strong><br>
+                        <strong>
+                            CAR : 04/10/2019 </strong>
+                    </div>
+                    <div class="card_infos_sub second hidden-xs col-sm-12">
+                        <div>D13K460</div>
+                        <div>DALBY - BENNES </div>
+                        <div>BRAS</div>
+                        <div>DALBY</div>
+                        <div>XHM3 MONTE 20-22T</div>
+                    </div>
+                    <div class="card_footer card_infos_sub col-xs-12">
+                        <a href="t"
+                            class="card_link">Détails et réservations</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xs-12">
+
+                <div class="vehicule_dispo_card row  list">
+                    <div class="col-xs-7 col-sm-12 col-xs-push-5 col-sm-push-0 p-0">
+                        <div class="card_header">
+                            <div class="textRight">18169170</div>
+                            <div class="textLeft">FM 62 TR3 HAX</div>
+                            <div class="operation">PRÊT A PARTIR</div>
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <div>D13K460</div>
+                            <div>DALBY - BENNES </div>
+                            <div>BRAS</div>
+                            <div>DALBY</div>
+                            <div>XHM3 MONTE 20-22T</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-12 col-xs-pull-7 col-sm-pull-0 p-0">
+                        <div class="card_picture">
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <strong>CDD : 20191004</strong><br>
+                            <strong>
+                                CAR : 15/11/2019 </strong>
+                        </div>
+                    </div>
+                    <div class="card_infos_sub first hidden-xs col-sm-12">
+                        <strong>CDD : 20191004</strong><br>
+                        <strong>
+                            CAR : 15/11/2019 </strong>
+                    </div>
+                    <div class="card_infos_sub second hidden-xs col-sm-12">
+                        <div>D13K460</div>
+                        <div>DALBY - BENNES </div>
+                        <div>BRAS</div>
+                        <div>DALBY</div>
+                        <div>XHM3 MONTE 20-22T</div>
+                    </div>
+                    <div class="card_footer card_infos_sub col-xs-12">
+                        <a href="t"
+                            class="card_link">Détails et réservations</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xs-12">
+
+                <div class="vehicule_dispo_card row  list">
+                    <div class="col-xs-7 col-sm-12 col-xs-push-5 col-sm-push-0 p-0">
+                        <div class="card_header">
+                            <div class="textRight">19096469</div>
+                            <div class="textLeft">FM 62 TR3 HAX</div>
+                            <div class="operation">PRÊT A PARTIR</div>
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <div>D13K460</div>
+                            <div>DALBY - BENNES </div>
+                            <div>BRAS</div>
+                            <div>DALBY</div>
+                            <div>XHM3 : POTENCE COULISSANTE</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-12 col-xs-pull-7 col-sm-pull-0 p-0">
+                        <div class="card_picture">
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <strong>CDD : 20200116</strong><br>
+                            <strong>
+                                &nbsp; </strong>
+                        </div>
+                    </div>
+                    <div class="card_infos_sub first hidden-xs col-sm-12">
+                        <strong>CDD : 20200116</strong><br>
+                        <strong>
+                            &nbsp; </strong>
+                    </div>
+                    <div class="card_infos_sub second hidden-xs col-sm-12">
+                        <div>D13K460</div>
+                        <div>DALBY - BENNES </div>
+                        <div>BRAS</div>
+                        <div>DALBY</div>
+                        <div>XHM3 : POTENCE COULISSANTE</div>
+                    </div>
+                    <div class="card_footer card_infos_sub col-xs-12">
+                        <a href="t"
+                            class="card_link">Détails et réservations</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xs-12">
+
+                <div class="vehicule_dispo_card row  list">
+                    <div class="col-xs-7 col-sm-12 col-xs-push-5 col-sm-push-0 p-0">
+                        <div class="card_header">
+                            <div class="textRight">19096470</div>
+                            <div class="textLeft">FM 62 TR3 HAX</div>
+                            <div class="operation">PRÊT A PARTIR</div>
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <div>D13K460</div>
+                            <div>DALBY - BENNES </div>
+                            <div>BRAS</div>
+                            <div>DALBY</div>
+                            <div>XHM3 : POTENCE COULISSANTE</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-12 col-xs-pull-7 col-sm-pull-0 p-0">
+                        <div class="card_picture">
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <strong>CDD : 20200116</strong><br>
+                            <strong>
+                                &nbsp; </strong>
+                        </div>
+                    </div>
+                    <div class="card_infos_sub first hidden-xs col-sm-12">
+                        <strong>CDD : 20200116</strong><br>
+                        <strong>
+                            &nbsp; </strong>
+                    </div>
+                    <div class="card_infos_sub second hidden-xs col-sm-12">
+                        <div>D13K460</div>
+                        <div>DALBY - BENNES </div>
+                        <div>BRAS</div>
+                        <div>DALBY</div>
+                        <div>XHM3 : POTENCE COULISSANTE</div>
+                    </div>
+                    <div class="card_footer card_infos_sub col-xs-12">
+                        <a href="ht"
+                            class="card_link">Détails et réservations</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xs-12">
+
+                <div class="vehicule_dispo_card row  list">
+                    <div class="col-xs-7 col-sm-12 col-xs-push-5 col-sm-push-0 p-0">
+                        <div class="card_header">
+                            <div class="textRight">19096471</div>
+                            <div class="textLeft">FM 62 TR3 HAX</div>
+                            <div class="operation">PRÊT A PARTIR</div>
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <div>D13K460</div>
+                            <div>DALBY - BENNES </div>
+                            <div>BRAS</div>
+                            <div>DALBY</div>
+                            <div>XHM3 : POTENCE COULISSANTE</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-12 col-xs-pull-7 col-sm-pull-0 p-0">
+                        <div class="card_picture">
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <strong>CDD : 20200116</strong><br>
+                            <strong>
+                                &nbsp; </strong>
+                        </div>
+                    </div>
+                    <div class="card_infos_sub first hidden-xs col-sm-12">
+                        <strong>CDD : 20200116</strong><br>
+                        <strong>
+                            &nbsp; </strong>
+                    </div>
+                    <div class="card_infos_sub second hidden-xs col-sm-12">
+                        <div>D13K460</div>
+                        <div>DALBY - BENNES </div>
+                        <div>BRAS</div>
+                        <div>DALBY</div>
+                        <div>XHM3 : POTENCE COULISSANTE</div>
+                    </div>
+                    <div class="card_footer card_infos_sub col-xs-12">
+                        <a href="htt"
+                            class="card_link">Détails et réservations</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xs-12">
+
+                <div class="vehicule_dispo_card row  list">
+                    <div class="col-xs-7 col-sm-12 col-xs-push-5 col-sm-push-0 p-0">
+                        <div class="card_header">
+                            <div class="textRight">19096472</div>
+                            <div class="textLeft">FM 62 TR3 HAX</div>
+                            <div class="operation">PRÊT A PARTIR</div>
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <div>D13K460</div>
+                            <div>DALBY - BENNES </div>
+                            <div>BRAS</div>
+                            <div>DALBY</div>
+                            <div>XHM3 : POTENCE COULISSANTE</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5 col-sm-12 col-xs-pull-7 col-sm-pull-0 p-0">
+                        <div class="card_picture">
+                        </div>
+                        <div class="card_infos_sub visible-xs-block">
+                            <strong>CDD : 20200116</strong><br>
+                            <strong>
+                                &nbsp; </strong>
+                        </div>
+                    </div>
+                    <div class="card_infos_sub first hidden-xs col-sm-12">
+                        <strong>CDD : 20200116</strong><br>
+                        <strong>
+                            &nbsp; </strong>
+                    </div>
+                    <div class="card_infos_sub second hidden-xs col-sm-12">
+                        <div>D13K460</div>
+                        <div>DALBY - BENNES </div>
+                        <div>BRAS</div>
+                        <div>DALBY</div>
+                        <div>XHM3 : POTENCE COULISSANTE</div>
+                    </div>
+                    <div class="card_footer card_infos_sub col-xs-12">
+                        <a href="t"
+                            class="card_link">Détails et réservations</a>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </section>
+
+
+
+
+    <div id="loader">
+    </div>
+    <hr class="clear">
+    <!-- footer -->
+
+    <footer class="footer " role="contentinfo">
+
+    </footer>
+    <!-- /footer -->
+    </div>
